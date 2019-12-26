@@ -61,5 +61,5 @@ trunk_template = [
 mode = input("Введите режим работы интерфейса (access/trunk): ")
 int = input("Введите тип и номер интерфейса: ")
 vlans = input("Введите номер влан(ов): ")
-print(id(mode + "_template"))
-print(id(trunk_template))
+global_template = {"access_template" : access_template, "trunk_template": trunk_template}
+print("interface " + int + "\n" + str(global_template[mode + '_template']).format(vlans).replace(", ", "\n").strip("[]").replace("'",""))

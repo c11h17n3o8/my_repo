@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # -*- coding: utf-8 -*-
 '''
 Задание 5.3a
@@ -21,3 +23,10 @@ trunk_template = [
     'switchport trunk encapsulation dot1q', 'switchport mode trunk',
     'switchport trunk allowed vlan {}'
 ]
+
+input_list = {"input_access" : "Введите номер VLAN: ", "input_trunk" : "Введите разрешенные VLANы: "}
+mode = input("Введите режим работы интерфейса (access/trunk): ")
+int = input("Введите тип и номер интерфейса: ")
+vlans = input(input_list["input_" + mode])
+global_template = {"access_template" : access_template, "trunk_template": trunk_template}
+print("interface " + int + "\n" + str(global_template[mode + '_template']).format(vlans).replace(", ", "\n").strip("[]").replace("'",""))

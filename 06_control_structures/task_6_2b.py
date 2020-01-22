@@ -16,7 +16,7 @@ ip = input("Введите IP-адрес в формате 10.0.1.1: ")
 ipIsCorrect = False
 while not ipIsCorrect:
 	if len(ip.split(".")) != 4:
-		print("Неправильный IP-адрес.")
+		pass
 	else:
 		for octet in ip.split("."):
 			if not int(octet) in range(255):
@@ -37,4 +37,4 @@ while not ipIsCorrect:
 				else:
 					print("unused")
 				continue
-	ip = input("Введите еще раз: ")
+	ip = input("Неправильный IP-адрес. Введите еще раз: ")

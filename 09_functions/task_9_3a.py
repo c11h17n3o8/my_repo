@@ -40,21 +40,9 @@ def get_int_vlan_map(config):
 					if cmd.startswith(" switchport access vlan"):
                                         	int_cfg.update({line.split("\n")[0]: cmd.split()[-1]})
 		if line.find("switchport mode trunk") != -1:
-#			int_cfg_2.update({line.split("\n")[0]: "trunk"})
 			for cmd in line.split("\n"):
 				if cmd.startswith(" switchport trunk allowed vlan"):
 					int_cfg_2.update({line.split("\n")[0]: cmd.split()[-1].split(",")})
 	list_sum = [int_cfg, int_cfg_2]
 	return list_sum
-'''
-if line.startswith("\ninterface Fast"):
-                        line = line.split("\n")
-                        for cmd in line:
-                                if cmd.startswith(" switchport access vlan"):
-                                        int_cfg.update({line[1]: cmd.split()[-1]})
-                                if cmd.startswith(" switchport trunk allowed vlan"):
-                                        int_cfg_2.update({line[1]: (cmd.split()[-1]).split(",")})
-        list_sum = [int_cfg, int_cfg_2]
-        return list_sum
-'''
 print(get_int_vlan_map("config_sw2.txt"))
